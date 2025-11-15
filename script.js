@@ -3,28 +3,28 @@ getSumBtn.append("Get Total Price");
 document.body.appendChild(getSumBtn);
 
 const getSum = () => {
-  // 1️⃣ Get all prices
-  const priceList = document.querySelectorAll(".prices");
-
-  // 2️⃣ Calculate total
+  // 1. Get all prices
+  const priceList = document.querySelectorAll(".price"); // test uses .price
   let total = 0;
+
   priceList.forEach((price) => {
     total += Number(price.textContent);
   });
 
-  // 3️⃣ Create new row
+  // 2. Create the new row and cell
   const table = document.querySelector("table");
   const row = document.createElement("tr");
   const cell = document.createElement("td");
 
-  // rowspan = full width of table
+  // IMPORTANT: test expects #ans
+  cell.id = "ans";
+  cell.textContent = total;
+
+  // Make it full-width (if table has 2 cols)
   cell.setAttribute("colspan", "2");
-  cell.textContent = `Total Price = ${total}`;
 
   row.appendChild(cell);
   table.appendChild(row);
 };
 
 getSumBtn.addEventListener("click", getSum);
-
-
